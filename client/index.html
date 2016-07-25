@@ -1,0 +1,26 @@
+<html ng-app="myApp">
+
+<head>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/sample.css">
+</head>
+
+<body>
+    <div class="container" ng-controller="TestCtrl as test">
+        <h1>{{test.hello}}</h1>
+        <form id="tableForm" action="/getJsonData" method="post">
+            <select class="selectpicker" data-style="btn-info" name="testpicker">
+        <optgroup label="Select Table">
+            <option name="" value="0">Select table test</option>
+            <option name="table1" value="student">student</option>
+            <option name="table2" value="teacher">teacher</option>
+        </optgroup>
+    </select>
+            <input type="submit" />
+        </form>
+    </div>
+    <script type="text/javascript" src="/js/lib/angular.js"></script>
+    <script type="text/javascript" src="/js/test_module/myApp.js"></script>
+</body>
+
+</html>
