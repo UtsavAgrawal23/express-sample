@@ -47,7 +47,37 @@ var dbres = [];
     res.send("test "+ dbres);
 });
 
-mongoose.connect('mongodb://utsavdb:utsavdb@ds015995.mlab.com:15995/nodetodosample');
+app.get('/db', function(req, res){
+      console.log("db.........");
+      Blog.find({}, function (err, data) {
+        if (err) {
+            console.log("Problem in fetching data");
+        }
+        console.log("Testing ------" + data);
+        res.send(data);
+    });
+
+});
+
+app.get('/savedb', function(req, res){
+      console.log("save db");
+      var testdata = new Blog({
+          username: "newData",
+          todo:"save data",
+          isDone: true,
+          hasAttachment: false
+      });
+      testdata.save(function(err,testdata){
+               if(err) {
+                   console.log(err)
+               }
+               else {
+                   console.log("Saved..."+testdata);
+               }
+      });
+});
+
+mongoose.connect('mongodb://utsavdb2:utsavdb2@ds015995.mlab.com:15995/nodetodosample');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
